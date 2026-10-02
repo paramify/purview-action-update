@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "purview-action-update"
+version = "1.0.0"
+description = "Updates Microsoft Purview Compliance Manager improvement actions from Paramify"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "GPL-3.0-only" }
+dependencies = ["requests", "openpyxl", "python-dotenv"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+purview-action-update = "purview_action_update.run:main"
+
+[tool.setuptools.packages.find]
+include = ["purview_action_update*"]
+
+[tool.setuptools.package-data]
+purview_action_update = ["fixtures/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
